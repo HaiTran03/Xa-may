@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prototype - Đăng ký KHCN Xe máy</title>
+<style>
+  :root{
+    --grad: linear-gradient(135deg,#f7a046 0%,#ef5b4f 55%,#e8336a 100%);
+    --orange:#f08a3c; --orange-soft:#fde3cc; --text:#1f1f1f; --muted:#8a8a8a;
+    --border:#1f1f1f; --err:#e53935;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  body{background:#4e6b3f;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:24px 12px}
+  .phone{width:375px;height:760px;background:#fff;border-radius:28px;overflow:hidden;position:relative;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+  .screen{position:absolute;inset:0;display:none;flex-direction:column}
+  .screen.active{display:flex}
+  .status{display:flex;justify-content:space-between;align-items:center;padding:10px 22px 0;font-size:14px;font-weight:600;color:#fff}
+
+  /* HOME */
+  .home-top{background:var(--grad);padding-bottom:40px}
+  .home-title{text-align:center;color:#fff;font-weight:600;font-size:17px;margin:16px 0 18px}
+  .hello{display:flex;align-items:center;gap:12px;padding:0 16px;color:#fff}
+  .avatar{width:48px;height:48px;border-radius:50%;background:#4b5a7a;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+  .avatar span{width:30px;height:30px;border-radius:50%;background:#e8edf5;margin-bottom:-10px;box-shadow:0 -18px 0 -6px #e8edf5}
+  .hello b{display:block;font-size:15px}
+  .hello small{font-size:13px;opacity:.9}
+  .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:20px 8px 0}
+  .item{display:flex;flex-direction:column;align-items:center;cursor:pointer;text-align:center;-webkit-tap-highlight-color:transparent}
+  .item .ic{width:46px;height:46px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform .1s}
+  .item:active .ic{transform:scale(.92)}
+  .item .lb{font-size:11.5px;font-weight:600;margin-top:5px;line-height:1.25}
+  .quick .lb{color:#fff}
+  .quick .item.target .ic{box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(255,255,255,.5);animation:pulse 1.6s infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 2px #fff,0 0 0 8px rgba(255,255,255,.15)}}
+  .home-body{flex:1;background:#fff;margin-top:-26px;border-radius:22px 22px 0 0;overflow-y:auto;padding:18px 8px 90px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);row-gap:16px;column-gap:4px}
+  .grid .ic{border:1px solid #ddd;background:#fafafa}
+  .grid .lb{color:#222;font-weight:500}
+  .divider{height:1px;background:#e5e5e5;margin:16px -8px}
+  .tabbar{position:absolute;bottom:0;left:0;right:0;height:72px;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;align-items:center;padding:0 30px}
+  .tab{display:flex;flex-direction:column;align-items:center;font-size:11px;font-weight:600;cursor:pointer;padding:6px 14px;border-radius:14px;position:relative}
+  .tab.on{background:#f3ece6;color:var(--orange)}
+  .tab .t{font-size:20px}
+  .badge{position:absolute;top:-4px;right:-2px;background:#e8336a;color:#fff;font-size:10px;padding:1px 5px;border-radius:9px}
+
+  /* FORM */
+  .header{background:var(--grad);height:96px;display:flex;align-items:flex-end;padding:0 14px 16px;color:#fff;flex-shrink:0}
+  .header .row{display:flex;align-items:center;width:100%}
+  .back{width:30px;height:30px;border-radius:50%;background:#fbe3c8;border:none;font-size:18px;font-weight:700;cursor:pointer;color:#222}
+  .header h1{flex:1;text-align:center;font-size:16px;font-weight:700;margin-right:30px}
+  .form{flex:1;overflow-y:auto;padding:14px 14px 20px}
+  .sec{font-weight:700;font-size:14px;margin-bottom:8px}
+  .plate{display:flex;gap:8px;margin-bottom:18px}
+  .plate .field{flex:1;margin:0}
+  .btn-check{width:96px;border-radius:8px;border:1px solid #f1c9a5;background:var(--orange-soft);font-size:14px;cursor:pointer}
+  .field{position:relative;border:1px solid var(--border);border-radius:8px;min-height:46px;margin-bottom:16px;display:flex;align-items:center}
+  .field.err{border-color:var(--err)}
+  .field label{position:absolute;left:12px;top:6px;font-size:10.5px;color:var(--muted);pointer-events:none}
+  .field input,.field select{width:100%;height:46px;border:none;outline:none;background:transparent;padding:16px 12px 4px;font-size:14px;color:var(--text);appearance:none;-webkit-appearance:none}
+  .field.ph input{padding:4px 12px}
+  .field select{padding-right:30px;cursor:pointer}
+  .field .arrow{position:absolute;right:12px;pointer-events:none;font-size:11px}
+  .field .msg{position:absolute;left:4px;bottom:-15px;font-size:10.5px;color:var(--err)}
+  .two{display:flex;gap:8px}
+  .two .field{flex:1}
+  .ocr{cursor:pointer;padding:0 12px;justify-content:space-between;font-size:13px;color:#555}
+  .ocr .cam{color:#2f6fe0;font-size:18px}
+  .ocr input{display:none}
+  .btn-next{width:100%;height:46px;border-radius:8px;border:none;background:var(--orange-soft);font-size:15px;font-weight:500;cursor:pointer;margin-top:10px}
+  .btn-next:active,.btn-check:active{filter:brightness(.95)}
+
+  /* TOAST / MODAL */
+  .toast{position:absolute;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);background:rgba(30,30,30,.92);color:#fff;padding:10px 16px;border-radius:10px;font-size:13px;opacity:0;transition:.25s;pointer-events:none;text-align:center;width:max-content;max-width:300px;z-index:20}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .modal{position:absolute;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:30}
+  .modal.show{display:flex}
+  .box{background:#fff;border-radius:14px;width:280px;padding:22px 18px 14px;text-align:center}
+  .box .ico{font-size:34px}
+  .box h3{font-size:16px;margin:8px 0 6px}
+  .box p{font-size:13px;color:#555;margin-bottom:16px}
+  .box button{width:100%;height:40px;border:none;border-radius:8px;background:var(--grad);color:#fff;font-weight:600;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- ================= MÀN 1: TRANG CHỦ ================= -->
+  <section class="screen active" id="home">
+    <div class="home-top">
+      <div class="status"><span>16:40</span><span>▮▮▮ ◔ 92</span></div>
+      <div class="home-title">Trang chủ</div>
+      <div class="hello">
+        <div class="avatar"><span></span></div>
+        <div><b>Xin chào!</b><small>vdtc_test</small></div>
+      </div>
+      <div class="quick">
+        <div class="item oos"><div class="ic">👥</div><div class="lb">Đăng ký KHCN</div></div>
+        <div class="item oos"><div class="ic">🏢</div><div class="lb">Đăng ký KHDN</div></div>
+        <div class="item oos"><div class="ic">🎟️</div><div class="lb">Mua vé</div></div>
+        <div class="item target" id="goForm"><div class="ic">🛵</div><div class="lb">Đăng ký KHCN - Xe máy</div></div>
+      </div>
+    </div>
+    <div class="home-body">
+      <div class="grid">
+        <div class="item oos"><div class="ic">🔍</div><div class="lb">Tra cứu KH</div></div>
+        <div class="item oos"><div class="ic">📝</div><div class="lb">Bổ sung HĐ mới</div></div>
+        <div class="item oos"><div class="ic">📋</div><div class="lb">Ký Phụ lục HĐ</div></div>
+        <div class="item oos"><div class="ic">🔗</div><div class="lb">Liên kết TK thanh toán</div></div>
+        <div class="item oos"><div class="ic">🖥️</div><div class="lb">ETC 360</div></div>
+        <div class="item oos"><div class="ic">✏️</div><div class="lb">Đấu nối nhanh</div></div>
+        <div class="item oos"><div class="ic">🔀</div><div class="lb">Đổi thẻ/ Dán lại thẻ</div></div>
+        <div class="item oos"><div class="ic">🗂️</div><div class="lb">Lịch sử đấu nối</div></div>
+      </div>
+      <div class="divider"></div>
+      <div class="grid">
+        <div class="item oos"><div class="ic">👨‍👩‍👧</div><div class="lb">Khách hàng</div></div>
+        <div class="item oos"><div class="ic">📄</div><div class="lb">Hợp đồng</div></div>
+        <div class="item oos"><div class="ic">🧑‍🤝‍🧑</div><div class="lb">Đấu nối theo đơn hàng</div></div>
+        <div class="item oos"><div class="ic">📑</div><div class="lb">DS thẻ đấu lỗi</div></div>
+      </div>
+    </div>
+    <div class="tabbar">
+      <div class="tab on"><span class="t">🏠</span>Trang chủ</div>
+      <div class="tab oos"><span class="t">✉️</span><span class="badge">9008</span>Hộp thư</div>
+      <div class="tab oos"><span class="t">👤</span>Tài khoản</div>
+    </div>
+  </section>
+
+  <!-- ================= MÀN 2: ĐĂNG KÝ KHCN - XE MÁY ================= -->
+  <section class="screen" id="form">
+    <div class="header"><div class="row">
+      <button class="back" id="back">‹</button>
+      <h1>Đăng ký KHCN - Xe máy</h1>
+    </div></div>
+
+    <div class="form" id="formBody">
+      <div class="sec">Kiểm tra biển số xe:</div>
+      <div class="plate">
+        <div class="field ph"><input id="plate" placeholder="Nhập biển số xe"></div>
+        <button class="btn-check" id="btnCheck">Kiểm tra</button>
+      </div>
+
+      <div class="field" data-req>
+        <label>Loại khách hàng *</label>
+        <select id="custType"><option value=""></option>
+          <option>Cá nhân nước ngoài</option><option>Cá nhân trong nước</option></select>
+        <span class="arrow">▼</span>
+      </div>
+
+      <label class="field ocr">
+        <span id="ocrText">Chọn ảnh OCR:</span><span class="cam">📷</span>
+        <input type="file" accept="image/*" id="ocr">
+      </label>
+
+      <div class="field" data-req><label>Họ và tên *</label><input id="name"></div>
+
+      <div class="two">
+        <div class="field" data-req><label>Ngày sinh *</label><input type="date" id="dob"></div>
+        <div class="field">
+          <label>Giới tính</label>
+          <select id="gender"><option value=""></option>
+            <option>Nam</option><option>Nữ</option><option>Không xác định</option></select>
+          <span class="arrow">▼</span>
+        </div>
+      </div>
+
+      <div class="field" data-req>
+        <label>Loại giấy tờ *</label>
+        <select id="docType"><option value=""></option>
+          <option>Ảnh CCCD gắn chip (ảnh 2 mặt)</option>
+          <option>Ảnh CC gắn chip (ảnh 2 mặt)</option>
+          <option>Hộ chiếu (Ảnh mặt trước)</option></select>
+        <span class="arrow">▼</span>
+      </div>
+
+      <div class="field" data-req><label>Số giấy tờ *</label><input id="docNo"></div>
+
+      <div class="two">
+        <div class="field" data-req><label>Ngày cấp *</label><input type="date" id="issueDate"></div>
+        <div class="field" data-req><label>Nơi cấp *</label><input id="issuePlace"></div>
+      </div>
+
+      <div class="field" data-req>
+        <label>Tỉnh/TP/Xã Phường *</label>
+        <select id="area"><option value=""></option>
+          <option>Hà Nội - Phường Cầu Giấy</option>
+          <option>Hà Nội - Phường Hoàn Kiếm</option>
+          <option>TP. Hồ Chí Minh - Phường Sài Gòn</option>
+          <option>Đà Nẵng - Phường Hải Châu</option>
+          <option>Hải Phòng - Phường Hồng Bàng</option></select>
+        <span class="arrow">▼</span>
+      </div>
+
+      <div class="field" data-req><label>Địa chỉ chi tiết *</label><input id="addr"></div>
+      <div class="field" data-req><label>Điện thoại *</label><input type="tel" id="phone" maxlength="10"></div>
+      <div class="field"><label>Email</label><input type="email" id="email"></div>
+
+      <button class="btn-next" id="btnNext">Tiếp tục</button>
+    </div>
+  </section>
+
+  <div class="toast" id="toast"></div>
+  <div class="modal" id="modal"><div class="box">
+    <div class="ico" id="mIco">ℹ️</div><h3 id="mTitle"></h3><p id="mText"></p>
+    <button id="mOk">Đóng</button>
+  </div></div>
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  let toastTimer;
+  function toast(msg){
+    const t=$('toast'); t.textContent=msg; t.classList.add('show');
+    clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),1800);
+  }
+  function modal(icon,title,text){
+    $('mIco').textContent=icon; $('mTitle').textContent=title; $('mText').textContent=text;
+    $('modal').classList.add('show');
+  }
+  $('mOk').onclick=()=>$('modal').classList.remove('show');
+
+  function show(id){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    $(id).classList.add('active');
+  }
+
+  // Chức năng ngoài phạm vi
+  document.querySelectorAll('.oos').forEach(el=>el.addEventListener('click',()=>{
+    const name = el.querySelector('.lb')?.textContent || el.textContent.replace(/\d+/g,'').trim();
+    modal('🚫','Không nằm trong phạm vi','Chức năng "'+name+'" không nằm trong phạm vi.');
+  }));
+
+  // Điều hướng
+  $('goForm').onclick=()=>{ show('form'); $('formBody').scrollTop=0; };
+  $('back').onclick=()=>show('home');
+
+  // Kiểm tra biển số
+  $('btnCheck').onclick=()=>{
+    const v=$('plate').value.trim().toUpperCase().replace(/\s/g,'');
+    if(!v) return toast('Vui lòng nhập biển số xe');
+    if(!/^\d{2}[A-Z]{1,2}\d?-?\d{4,5}(\.\d{2})?$/.test(v.replace('.',''))&&!/^\d{2}[A-Z]{1,2}\d?[-]?\d{3}\.?\d{2}$/.test(v))
+      return toast('Biển số xe không đúng định dạng (VD: 29X1-123.45)');
+    toast('Biển số '+v+' hợp lệ, chưa được đăng ký');
+  };
+
+  // Chọn ảnh OCR
+  $('ocr').onchange=e=>{
+    const f=e.target.files[0];
+    if(f){ $('ocrText').textContent='Đã chọn: '+f.name; toast('Đã tải ảnh OCR (demo, không bóc tách dữ liệu)'); }
+  };
+
+  // Chỉ cho nhập số ở điện thoại
+  $('phone').oninput=e=>e.target.value=e.target.value.replace(/\D/g,'');
+
+  // Xoá lỗi khi người dùng nhập
+  document.querySelectorAll('.field input,.field select').forEach(i=>i.addEventListener('input',()=>{
+    const f=i.closest('.field'); f.classList.remove('err'); f.querySelector('.msg')?.remove();
+  }));
+
+  function setErr(field,msg){
+    field.classList.add('err');
+    if(!field.querySelector('.msg')){ const s=document.createElement('span'); s.className='msg'; s.textContent=msg; field.appendChild(s); }
+  }
+
+  // Tiếp tục: validate
+  $('btnNext').onclick=()=>{
+    document.querySelectorAll('.field').forEach(f=>{f.classList.remove('err');f.querySelector('.msg')?.remove();});
+    let first=null;
+    document.querySelectorAll('.field[data-req]').forEach(f=>{
+      const i=f.querySelector('input,select');
+      if(!i.value.trim()){ setErr(f,'Trường bắt buộc'); first=first||f; }
+    });
+    const phone=$('phone'); if(phone.value && !/^0\d{9}$/.test(phone.value)){ setErr(phone.closest('.field'),'SĐT gồm 10 số, bắt đầu bằng 0'); first=first||phone.closest('.field'); }
+    const email=$('email'); if(email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){ setErr(email.closest('.field'),'Email không hợp lệ'); first=first||email.closest('.field'); }
+    const today=new Date().toISOString().slice(0,10);
+    if($('dob').value && $('dob').value>today){ setErr($('dob').closest('.field'),'Không lớn hơn hôm nay'); first=first||$('dob').closest('.field'); }
+    if($('issueDate').value){
+      if($('issueDate').value>today){ setErr($('issueDate').closest('.field'),'Không lớn hơn hôm nay'); first=first||$('issueDate').closest('.field'); }
+      else if($('dob').value && $('issueDate').value<$('dob').value){ setErr($('issueDate').closest('.field'),'Phải sau ngày sinh'); first=first||$('issueDate').closest('.field'); }
+    }
+    if(first){ first.scrollIntoView({behavior:'smooth',block:'center'}); return toast('Vui lòng kiểm tra lại thông tin'); }
+    modal('✅','Thông tin hợp lệ','Bước tiếp theo không nằm trong phạm vi của prototype.');
+  };
+</script>
+</body>
+</html>
