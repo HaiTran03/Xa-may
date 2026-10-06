@@ -80,6 +80,28 @@
   .box h3{font-size:16px;margin:8px 0 6px}
   .box p{font-size:13px;color:#555;margin-bottom:16px}
   .box button{width:100%;height:40px;border:none;border-radius:8px;background:var(--grad);color:#fff;font-weight:600;cursor:pointer}
+  .box .btns{display:flex;gap:8px}
+  .box button.ghost{background:#eee;color:#333}
+
+  /* B2 - HỢP ĐỒNG / ĐỊA CHỈ THÔNG BÁO CƯỚC */
+  .form.gray{background:#f5f5f5}
+  .sec2{font-weight:700;color:#555;font-size:14px;margin:4px 0 10px}
+  .card{background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:12px 10px 2px;margin-bottom:18px}
+  .copy{color:var(--orange);font-size:13px;cursor:pointer;margin-bottom:14px;display:inline-block}
+  .copy:active{opacity:.6}
+  .group{border:1px solid var(--border);border-radius:8px;padding:22px 12px 12px;position:relative;margin-bottom:16px}
+  .group.err{border-color:var(--err)}
+  .group>.t{position:absolute;top:5px;left:12px;font-size:10.5px;color:var(--muted)}
+  .opts{display:flex;gap:40px;font-size:13px}
+  .opts label{display:flex;align-items:center;gap:6px;cursor:pointer}
+  input[type=checkbox],input[type=radio]{accent-color:var(--orange);width:15px;height:15px}
+  .actions{display:flex;gap:10px}
+  .footer{display:flex;gap:10px;padding:12px 10px 18px;background:#fff;flex-shrink:0}
+  .btn-sec{flex:1;height:44px;border-radius:8px;border:1px solid #ddd;background:#eee;font-size:14px;cursor:pointer}
+  .btn-pri{flex:1;height:44px;border-radius:8px;border:none;background:var(--orange-soft);font-size:14px;font-weight:600;cursor:pointer}
+  .btn-sec:active,.btn-pri:active{filter:brightness(.95)}
+  .banner{position:absolute;top:0;left:0;right:0;background:linear-gradient(90deg,#ef5b4f,#e8336a);color:#fff;padding:46px 16px 16px;font-size:14px;font-weight:600;transform:translateY(-100%);transition:transform .3s;z-index:25}
+  .banner.show{transform:none}
 </style>
 </head>
 <body>
@@ -183,12 +205,7 @@
 
       <div class="field" data-req>
         <label>Tỉnh/TP/Xã Phường *</label>
-        <select id="area"><option value=""></option>
-          <option>Hà Nội - Phường Cầu Giấy</option>
-          <option>Hà Nội - Phường Hoàn Kiếm</option>
-          <option>TP. Hồ Chí Minh - Phường Sài Gòn</option>
-          <option>Đà Nẵng - Phường Hải Châu</option>
-          <option>Hải Phòng - Phường Hồng Bàng</option></select>
+        <select id="area" class="area-select"></select>
         <span class="arrow">▼</span>
       </div>
 
@@ -200,10 +217,80 @@
     </div>
   </section>
 
+  <!-- ================= B2: THÔNG TIN HỢP ĐỒNG ================= -->
+  <section class="screen" id="contract">
+    <div class="header"><div class="row">
+      <button class="back" id="backContract">‹</button>
+      <h1>Thông tin hợp đồng</h1>
+    </div></div>
+    <div class="form">
+      <div class="field" data-req><label>Người ký *</label><input id="signer"></div>
+      <div class="field" data-req><label>Ngày ký *</label><input type="date" id="signDate"></div>
+      <div class="field" data-req><label>Ngày hiệu lực *</label><input type="date" id="effDate"></div>
+      <div class="actions" style="margin-top:70px">
+        <button class="btn-sec" id="contractBack">Quay lại</button>
+        <button class="btn-pri" id="contractNext">Tiếp tục</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MÀN 2: ĐỊA CHỈ THÔNG BÁO CƯỚC ================= -->
+  <section class="screen" id="bill">
+    <div class="header"><div class="row">
+      <button class="back" id="backBill">‹</button>
+      <h1>Địa chỉ thông báo cước</h1>
+    </div></div>
+    <div class="form gray" id="billBody">
+      <div class="sec2">Thông tin khách hàng</div>
+      <div class="card">
+        <span class="copy" id="copyCust">Sao chép thông tin từ khách hàng &gt;&gt;</span>
+        <div class="field"><label>Họ tên *</label><input id="bName"></div>
+        <div class="field"><label>Địa chỉ chi tiết *</label><input id="bAddr"></div>
+        <div class="field">
+          <label>Địa chỉ Tỉnh/Huyện/Xã *</label>
+          <select id="bArea" class="area-select"></select>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="field"><label>Số điện thoại *</label><input type="tel" id="bPhone" maxlength="10"></div>
+        <div class="field"><label>Email</label><input type="email" id="bEmail"></div>
+      </div>
+
+      <div class="sec2">Đăng ký dịch vụ</div>
+      <div class="card">
+        <div class="group" id="gNotify">
+          <span class="t">Nhận thông báo qua *</span>
+          <div class="opts">
+            <label><input type="checkbox" name="notify" value="Thông báo" checked> Thông báo</label>
+            <label><input type="checkbox" name="notify" value="SMS"> SMS</label>
+          </div>
+        </div>
+        <div class="group">
+          <span class="t">Chu kỳ hoá đơn *</span>
+          <div class="opts">
+            <label><input type="radio" name="cycle" value="luot" checked> Theo lượt</label>
+            <label><input type="radio" name="cycle" value="thang"> Theo tháng</label>
+          </div>
+        </div>
+        <div class="group" id="gMerge" style="display:none">
+          <span class="t">Gộp hoá đơn theo?</span>
+          <div class="opts">
+            <label><input type="radio" name="merge" value="hopdong" checked> Hợp đồng</label>
+            <label><input type="radio" name="merge" value="xe"> Theo xe</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <button class="btn-sec" id="billCancel">Huỷ bỏ</button>
+      <button class="btn-pri" id="billNext">Tiếp tục</button>
+    </div>
+  </section>
+
+  <div class="banner" id="banner"></div>
   <div class="toast" id="toast"></div>
   <div class="modal" id="modal"><div class="box">
     <div class="ico" id="mIco">ℹ️</div><h3 id="mTitle"></h3><p id="mText"></p>
-    <button id="mOk">Đóng</button>
+    <div class="btns"><button class="ghost" id="mCancel" style="display:none">Không</button><button id="mOk">Đóng</button></div>
   </div></div>
 </div>
 
@@ -214,11 +301,30 @@
     const t=$('toast'); t.textContent=msg; t.classList.add('show');
     clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),1800);
   }
-  function modal(icon,title,text){
+  let okHandler=null;
+  function modal(icon,title,text,opts={}){
     $('mIco').textContent=icon; $('mTitle').textContent=title; $('mText').textContent=text;
+    $('mOk').textContent=opts.ok||'Đóng';
+    $('mCancel').style.display=opts.onOk?'block':'none';
+    okHandler=opts.onOk||null;
     $('modal').classList.add('show');
   }
-  $('mOk').onclick=()=>$('modal').classList.remove('show');
+  $('mOk').onclick=()=>{ $('modal').classList.remove('show'); if(okHandler) okHandler(); };
+  $('mCancel').onclick=()=>$('modal').classList.remove('show');
+
+  let bTimer;
+  function banner(msg){
+    const b=$('banner'); b.textContent=msg; b.classList.add('show');
+    clearTimeout(bTimer); bTimer=setTimeout(()=>b.classList.remove('show'),2500);
+  }
+  function todayStr(){ const d=new Date(); return new Date(d-d.getTimezoneOffset()*60000).toISOString().slice(0,10); }
+
+  // Danh mục địa bàn dùng chung (mẫu)
+  const AREAS=['Phường Cầu Giấy, Thành phố Hà Nội','Phường Đông Ngạc, Thành phố Hà Nội','Phường Hoàn Kiếm, Thành phố Hà Nội',
+    'Phường Sài Gòn, Thành phố Hồ Chí Minh','Phường Hải Châu, Thành phố Đà Nẵng','Phường Hồng Bàng, Thành phố Hải Phòng'];
+  document.querySelectorAll('.area-select').forEach(s=>{
+    s.innerHTML='<option value=""></option>'+AREAS.map(a=>`<option>${a}</option>`).join('');
+  });
 
   function show(id){
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -273,15 +379,88 @@
     });
     const phone=$('phone'); if(phone.value && !/^0\d{9}$/.test(phone.value)){ setErr(phone.closest('.field'),'SĐT gồm 10 số, bắt đầu bằng 0'); first=first||phone.closest('.field'); }
     const email=$('email'); if(email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){ setErr(email.closest('.field'),'Email không hợp lệ'); first=first||email.closest('.field'); }
-    const today=new Date().toISOString().slice(0,10);
+    const today=todayStr();
     if($('dob').value && $('dob').value>today){ setErr($('dob').closest('.field'),'Không lớn hơn hôm nay'); first=first||$('dob').closest('.field'); }
     if($('issueDate').value){
       if($('issueDate').value>today){ setErr($('issueDate').closest('.field'),'Không lớn hơn hôm nay'); first=first||$('issueDate').closest('.field'); }
       else if($('dob').value && $('issueDate').value<$('dob').value){ setErr($('issueDate').closest('.field'),'Phải sau ngày sinh'); first=first||$('issueDate').closest('.field'); }
     }
     if(first){ first.scrollIntoView({behavior:'smooth',block:'center'}); return toast('Vui lòng kiểm tra lại thông tin'); }
+    // Sang B2 - Thông tin hợp đồng
+    $('signer').value=$('name').value.trim();
+    if(!$('signDate').value) $('signDate').value=todayStr();
+    if(!$('effDate').value) $('effDate').value=todayStr();
+    show('contract');
+  };
+
+  /* ---------- Helpers validate dạng banner ---------- */
+  function clearErrs(scope){
+    scope.querySelectorAll('.err').forEach(f=>{f.classList.remove('err');f.querySelector('.msg')?.remove();});
+  }
+  function fail(el,msg){
+    el.classList.add('err'); el.scrollIntoView({behavior:'smooth',block:'center'}); banner(msg); return false;
+  }
+
+  /* ---------- B2: Thông tin hợp đồng ---------- */
+  const backToForm=()=>show('form');
+  $('backContract').onclick=backToForm;
+  $('contractBack').onclick=backToForm;
+  $('contractNext').onclick=()=>{
+    clearErrs($('contract'));
+    for(const [id,lb] of [['signer','Người ký'],['signDate','Ngày ký'],['effDate','Ngày hiệu lực']])
+      if(!$(id).value.trim()) return fail($(id).closest('.field'),`Vui lòng nhập '${lb}'`);
+    if($('effDate').value<$('signDate').value)
+      return fail($('effDate').closest('.field'),"'Ngày hiệu lực' phải lớn hơn hoặc bằng 'Ngày ký'");
+    show('bill'); $('billBody').scrollTop=0;
+  };
+
+  /* ---------- Màn 2: Địa chỉ thông báo cước ---------- */
+  $('backBill').onclick=()=>show('contract');
+  $('bPhone').addEventListener('input',e=>e.target.value=e.target.value.replace(/\D/g,''));
+
+  // Màn 2.1 - Sao chép thông tin từ KH
+  $('copyCust').onclick=()=>{
+    $('bName').value=$('name').value.trim();
+    $('bAddr').value=$('addr').value.trim();
+    $('bArea').value=$('area').value;
+    $('bPhone').value=$('phone').value;
+    $('bEmail').value=$('email').value.trim();
+    clearErrs($('bill'));
+    toast('Đã sao chép thông tin từ khách hàng');
+  };
+
+  // Chu kỳ "Theo tháng" -> hiện "Gộp hoá đơn theo?"
+  document.querySelectorAll('input[name=cycle]').forEach(r=>r.addEventListener('change',()=>{
+    $('gMerge').style.display=document.querySelector('input[name=cycle]:checked').value==='thang'?'block':'none';
+  }));
+  document.querySelectorAll('input[name=notify]').forEach(c=>c.addEventListener('change',()=>$('gNotify').classList.remove('err')));
+
+  // Màn 2.2 - Validate, báo lỗi bằng banner trên cùng
+  $('billNext').onclick=()=>{
+    clearErrs($('bill'));
+    const req=[['bName','nhập','Họ tên'],['bAddr','nhập','Địa chỉ chi tiết'],['bArea','chọn','Địa chỉ Tỉnh/Huyện/Xã'],['bPhone','nhập','Số điện thoại']];
+    for(const [id,verb,lb] of req)
+      if(!$(id).value.trim()) return fail($(id).closest('.field'),`Vui lòng ${verb} '${lb}'`);
+    if(!/^0\d{9}$/.test($('bPhone').value))
+      return fail($('bPhone').closest('.field'),"'Số điện thoại' không hợp lệ (10 số, bắt đầu bằng 0)");
+    if($('bEmail').value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('bEmail').value))
+      return fail($('bEmail').closest('.field'),"'Email' không đúng định dạng");
+    if(!document.querySelector('input[name=notify]:checked'))
+      return fail($('gNotify'),"Vui lòng chọn 'Nhận thông báo qua'");
     modal('✅','Thông tin hợp lệ','Bước tiếp theo không nằm trong phạm vi của prototype.');
   };
+
+  // Huỷ bỏ
+  function resetAll(){
+    document.querySelectorAll('.phone input, .phone select').forEach(i=>{
+      if(i.type==='checkbox'||i.type==='radio') i.checked=i.defaultChecked; else i.value='';
+    });
+    $('ocrText').textContent='Chọn ảnh OCR:';
+    $('gMerge').style.display='none';
+    clearErrs(document);
+  }
+  $('billCancel').onclick=()=>modal('⚠️','Huỷ bỏ đăng ký?','Toàn bộ thông tin đã nhập sẽ không được lưu.',
+    {ok:'Đồng ý',onOk:()=>{resetAll();show('home');toast('Đã huỷ đăng ký');}});
 </script>
 </body>
 </html>
