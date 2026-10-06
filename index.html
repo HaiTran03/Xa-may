@@ -102,6 +102,72 @@
   .btn-sec:active,.btn-pri:active{filter:brightness(.95)}
   .banner{position:absolute;top:0;left:0;right:0;background:linear-gradient(90deg,#ef5b4f,#e8336a);color:#fff;padding:46px 16px 16px;font-size:14px;font-weight:600;transform:translateY(-100%);transition:transform .3s;z-index:25}
   .banner.show{transform:none}
+  .banner small{display:block;font-size:12px;font-weight:400;opacity:.9;margin-top:2px}
+
+  /* B3 - THÊM THẺ ĐỊNH DANH */
+  .radio-col{display:flex;flex-direction:column;gap:10px;font-size:13px;margin-bottom:16px}
+  .radio-col label{display:flex;align-items:center;gap:8px;cursor:pointer}
+  .serial-row{display:flex;gap:8px;margin-bottom:12px}
+  .serial-row .field{flex:1;margin:0}
+  .btn-qr{width:120px;border-radius:8px;border:none;background:#eee;font-size:14px;font-weight:600;cursor:pointer}
+  .btn-wide{width:100%;height:44px;border-radius:8px;border:1px solid #f1c9a5;background:var(--orange-soft);font-size:14px;font-weight:600;cursor:pointer;margin-bottom:16px}
+  .btn-qr:active,.btn-wide:active{filter:brightness(.95)}
+  /* B4 - THÔNG TIN PHƯƠNG TIỆN / HỒ SƠ THEO XE */
+  .half{width:calc(50% - 4px)}
+  .btn-link{width:100%;height:42px;border-radius:8px;border:1px solid #e3e3e3;background:#f2f2f2;font-size:14px;cursor:pointer;margin:20px 0 10px}
+  .docs{width:100%;border-collapse:collapse;font-size:12px}
+  .docs th{background:#f2f2f2;font-weight:500;padding:10px 4px;border:1px solid #e5e5e5}
+  .docs td{padding:8px 6px;border:1px solid #e5e5e5;vertical-align:middle;line-height:1.35}
+  .docs td.fn{font-weight:600;word-break:break-all;max-width:90px}
+  .docs td.c{text-align:center;width:40px}
+  .ico-btn{border:none;background:none;font-size:15px;cursor:pointer;padding:4px}
+  .ico-btn.del{color:var(--err);font-size:17px;font-weight:700}
+  .ico-btn:disabled{opacity:.25;cursor:default}
+  .upl{color:var(--orange);cursor:pointer;font-weight:600}
+  .preview{width:100%;height:150px;border-radius:8px;background:repeating-linear-gradient(45deg,#f3f3f3,#f3f3f3 10px,#e9e9e9 10px,#e9e9e9 20px);display:flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:12px;overflow:hidden}
+  .preview img{width:100%;height:100%;object-fit:cover}
+  /* B5 - HỢP ĐỒNG + VBCT + KÝ + OTP */
+  .screen.has-tab{padding-bottom:72px}
+  .doc-wrap{flex:1;overflow-y:auto;background:#7a7a7a;padding:10px 10px 0}
+  .consent-in{background:#fff;margin:0 -10px;padding:22px 14px 24px;display:flex;flex-direction:column;gap:16px}
+  .consent-in label{display:flex;gap:12px;font-size:12.5px;line-height:1.45;color:#333;cursor:pointer}
+  .consent-in input{flex-shrink:0;margin-top:2px;width:17px;height:17px}
+  .paper{background:#fff;padding:16px 14px;margin-bottom:10px;font-family:"Times New Roman",Times,serif;font-size:10px;line-height:1.55;color:#111;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+  .paper .logo{color:#e8336a;font-weight:700;font-style:italic;font-size:13px}
+  .paper h2{text-align:center;font-size:11.5px;margin:6px 0 2px}
+  .paper .sub{text-align:center;font-style:italic;font-size:9.5px}
+  .paper h4{font-size:10.5px;margin:10px 0 3px}
+  .paper .note{font-style:italic;font-weight:400}
+  .paper .sig{display:flex;justify-content:space-between;text-align:center;margin-top:14px;font-weight:700}
+  .paper .sig img{height:48px;display:block;margin:4px auto}
+  .paper .end{text-align:center;font-style:italic;color:#777;margin-top:10px}
+  .bar{padding:10px 12px;background:#fff;border-top:1px solid #eee;flex-shrink:0}
+  .bar .hint{font-size:11.5px;color:var(--muted);text-align:center;margin-bottom:6px}
+  .bar .btn-pri{width:100%}
+  .consent{flex:1;overflow-y:auto;padding:24px 14px 10px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+  .consent label{display:flex;gap:12px;font-size:12.5px;line-height:1.45;color:#333;cursor:pointer}
+  .consent input{flex-shrink:0;margin-top:2px;width:17px;height:17px}
+  .resign{margin-left:auto;background:#f8a3b9;color:#fff;border:none;border-radius:16px;padding:6px 10px;font-size:13px;cursor:pointer}
+  .header h1.ml{margin-right:0}
+  .sig-pad{flex:1;position:relative;background:#fff}
+  .sig-pad canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}
+  .sig-pad .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#c9c9c9;font-size:14px;pointer-events:none}
+  .banner.ok{background:#34c76f}
+  .banner{z-index:40}
+  .otp-box{background:#fff;border-radius:10px;width:290px;overflow:hidden}
+  .otp-box .hd{background:#f39250;color:#fff;text-align:center;font-weight:600;padding:12px;font-size:16px}
+  .otp-box .bd{padding:18px 18px 22px}
+  .otp-box .field{margin:0}
+  .otp-box .field input{padding:4px 12px;letter-spacing:2px}
+  .otp-box .bd .msg{position:static;display:block;margin-top:6px;font-size:11px;color:var(--err)}
+  .otp-box .ft{display:flex;border-top:1px solid #eee}
+  .otp-box .ft button{flex:1;height:44px;border:none;background:#fff;font-size:14px;cursor:pointer}
+  .otp-box .ft button+button{border-left:1px solid #eee;color:var(--orange);font-weight:600}
+  .btn-pri:disabled{background:#f3f3f3;color:#b5b5b5;cursor:not-allowed;filter:none}
+  .fee{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:18px}
+  .fee th{background:#f2f2f2;font-weight:500;padding:10px;border:1px solid #e5e5e5}
+  .fee td{padding:12px 10px;border:1px solid #e5e5e5;font-weight:600}
+  .fee td:last-child{color:var(--orange);text-align:center;width:40%}
 </style>
 </head>
 <body>
@@ -286,6 +352,183 @@
     </div>
   </section>
 
+  <!-- ================= B3: THÊM THẺ ĐỊNH DANH ================= -->
+  <section class="screen" id="card">
+    <div class="header"><div class="row">
+      <button class="back" id="backCard">‹</button>
+      <h1>Thêm thẻ định danh</h1>
+    </div></div>
+    <div class="form" style="padding-bottom:90px">
+      <div class="sec">Chọn loại thẻ định danh</div>
+      <div class="radio-col">
+        <label><input type="radio" name="cardType" value="NFC" checked> Thẻ NFC</label>
+        <label><input type="radio" name="cardType" value="RFID"> Thẻ RFID</label>
+      </div>
+      <div class="serial-row">
+        <div class="field"><label>Số Serial thẻ *</label><input id="serial" autocomplete="off"></div>
+        <button class="btn-qr" id="btnQr">Quét QRCode</button>
+      </div>
+      <button class="btn-wide" id="btnCheckCard">Kiểm tra thẻ</button>
+      <table class="fee" id="feeTable" style="display:none">
+        <thead><tr><th>Loại phí</th><th>Giá</th></tr></thead>
+        <tbody>
+          <tr><td>Phí đấu nối</td><td>118,000 đ</td></tr>
+          <tr><td>Tổng</td><td>118,000 đ</td></tr>
+        </tbody>
+      </table>
+      <div class="actions">
+        <button class="btn-sec" id="cardBack">Quay lại</button>
+        <button class="btn-pri" id="cardNext" disabled>Tiếp tục</button>
+      </div>
+    </div>
+    <div class="tabbar">
+      <div class="tab on tab-home"><span class="t">🏠</span>Trang chủ</div>
+      <div class="tab oos"><span class="t">✉️</span><span class="badge">9008</span>Hộp thư</div>
+      <div class="tab oos"><span class="t">👤</span>Tài khoản</div>
+    </div>
+  </section>
+
+  <!-- ================= B4: THÔNG TIN PHƯƠNG TIỆN ================= -->
+  <section class="screen" id="vehicle">
+    <div class="header"><div class="row">
+      <button class="back" id="backVehicle">‹</button>
+      <h1>Thông tin phương tiện</h1>
+    </div></div>
+    <div class="form" id="vehicleBody" style="padding-bottom:90px">
+      <div class="two">
+        <div class="field">
+          <label>Màu biển *</label>
+          <select id="vPlateColor"><option value=""></option>
+            <option>Trắng</option><option>Vàng</option><option>Xanh</option><option>Đỏ</option></select>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="field"><label>Biển số xe *</label><input id="vPlate"></div>
+      </div>
+      <div class="two">
+        <div class="field"><label>Tên chủ phương tiện *</label><input id="vOwner"></div>
+        <div class="field">
+          <label>Loại phương tiện *</label>
+          <select id="vType"><option value=""></option>
+            <option>Xe Mô tô gắn Máy</option><option>Xe gắn máy</option>
+            <option>Xe máy điện</option><option>Xe máy chuyên dùng</option></select>
+          <span class="arrow">▼</span>
+        </div>
+      </div>
+      <div class="two">
+        <div class="field"><label>Số khung</label><input id="vChassis"></div>
+        <div class="field"><label>Số máy</label><input id="vEngine"></div>
+      </div>
+      <div class="two">
+        <div class="field">
+          <label>Hãng xe</label>
+          <select id="vBrand"><option value=""></option>
+            <option>Honda</option><option>Yamaha</option><option>Vespa</option><option>VinFast</option>
+            <option>Yadea</option><option>Dat Bike</option><option>Khác</option></select>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="field"><label>Màu sơn</label><input id="vColor"></div>
+      </div>
+      <div class="field half"><label>Model</label><input id="vModel"></div>
+
+      <button class="btn-link" id="btnDocs">Hồ sơ theo xe &gt;&gt;</button>
+      <div class="actions">
+        <button class="btn-sec" id="vehicleBack">Quay lại</button>
+        <button class="btn-pri" id="vehicleSave">Lưu</button>
+      </div>
+    </div>
+    <div class="tabbar">
+      <div class="tab on tab-home"><span class="t">🏠</span>Trang chủ</div>
+      <div class="tab oos"><span class="t">✉️</span><span class="badge">9008</span>Hộp thư</div>
+      <div class="tab oos"><span class="t">👤</span>Tài khoản</div>
+    </div>
+  </section>
+
+  <!-- ================= B4: HỒ SƠ THEO XE ================= -->
+  <section class="screen" id="docs">
+    <div class="header"><div class="row">
+      <button class="back" id="backDocs">‹</button>
+      <h1>Hồ sơ theo xe</h1>
+    </div></div>
+    <div class="form gray" style="padding-bottom:90px">
+      <table class="docs">
+        <thead><tr><th>Loại giấy tờ</th><th>Tên file</th><th>Xem</th><th>Xoá</th></tr></thead>
+        <tbody id="docsBody"></tbody>
+      </table>
+      <input type="file" accept="image/*" id="docUpload" style="display:none">
+      <button class="btn-link" id="docsBack" style="margin-top:24px">Quay lại</button>
+    </div>
+    <div class="tabbar">
+      <div class="tab on tab-home"><span class="t">🏠</span>Trang chủ</div>
+      <div class="tab oos"><span class="t">✉️</span><span class="badge">9008</span>Hộp thư</div>
+      <div class="tab oos"><span class="t">👤</span>Tài khoản</div>
+    </div>
+  </section>
+
+  <!-- ================= B5 - MÀN 1: THÔNG TIN HỢP ĐỒNG ================= -->
+  <section class="screen has-tab" id="contractDoc">
+    <div class="header"><div class="row">
+      <button class="back" id="backDoc">‹</button>
+      <h1>Thông tin hợp đồng</h1>
+    </div></div>
+    <div class="doc-wrap" id="docWrap">
+      <div id="docPages"></div>
+      <!-- Đồng ý VBCT xử lý DLCN: nằm ngay dưới hợp đồng -->
+      <div class="consent-in">
+        <label><input type="checkbox" class="cs" checked> Mục đích cung cấp Sản phẩm, hàng hóa, dịch vụ cho Khách hàng theo Hợp đồng và thực hiện quyền, nghĩa vụ của EPASS theo quy định pháp luật (Theo khoản 1 Điều 3 Văn bản này)</label>
+        <label><input type="checkbox" class="cs" checked> Mục đích hỗ trợ Khách hàng khi mua, sử dụng Sản phẩm, hàng hóa, dịch vụ do EPASS cung cấp theo hợp đồng và quy định pháp luật (Theo khoản 2 Điều 3 Văn bản này)</label>
+        <label><input type="checkbox" class="cs" checked> Mục đích nâng cao chất lượng Sản phẩm, hàng hóa, dịch vụ mà EPASS cung cấp cho Khách hàng (Theo khoản 3 Điều 3 Văn bản này)</label>
+        <label><input type="checkbox" class="cs"> Thực hiện hoạt động quảng cáo, giới thiệu sản phẩm phù hợp với nhu cầu của Khách hàng hoặc EPASS cho rằng Khách hàng quan tâm (Theo khoản 4 Điều 3 Văn bản này)</label>
+        <label><input type="checkbox" class="cs"> Tổ chức giới thiệu và xúc tiến thương mại liên quan đến hoạt động thanh toán điện tử giao thông đường bộ (Theo khoản 5 Điều 3 Văn bản này)</label>
+      </div>
+    </div>
+    <div class="bar">
+      <div class="hint" id="docHint">Vui lòng kéo xuống cuối hợp đồng để ký</div>
+      <button class="btn-pri" id="docNext" disabled>Ký hợp đồng</button>
+    </div>
+    <div class="tabbar">
+      <div class="tab on tab-home"><span class="t">🏠</span>Trang chủ</div>
+      <div class="tab oos"><span class="t">✉️</span><span class="badge">9008</span>Hộp thư</div>
+      <div class="tab oos"><span class="t">👤</span>Tài khoản</div>
+    </div>
+  </section>
+
+
+  <!-- ================= B5 - MÀN 2: CHỮ KÝ KHÁCH HÀNG ================= -->
+  <section class="screen has-tab" id="signScr">
+    <div class="header"><div class="row">
+      <button class="back" id="backSign">‹</button>
+      <h1 class="ml">Chữ ký khách hàng</h1>
+      <button class="resign" id="btnResign">Ký lại</button>
+    </div></div>
+    <div class="sig-pad" id="sigPad">
+      <div class="ph" id="sigPh">Ký vào khung này</div>
+      <canvas id="sigCanvas"></canvas>
+    </div>
+    <div class="bar"><button class="btn-pri" id="signNext" disabled>Ký</button></div>
+    <div class="tabbar">
+      <div class="tab on tab-home"><span class="t">🏠</span>Trang chủ</div>
+      <div class="tab oos"><span class="t">✉️</span><span class="badge">9008</span>Hộp thư</div>
+      <div class="tab oos"><span class="t">👤</span>Tài khoản</div>
+    </div>
+  </section>
+
+  <!-- ================= FRAME 5: NHẬP OTP ================= -->
+  <div class="modal" id="otpModal" style="background:rgba(0,0,0,.6)"><div class="otp-box">
+    <div class="hd">Nhập OTP</div>
+    <div class="bd">
+      <div class="field" id="otpField"><input id="otp" inputmode="numeric" maxlength="6" placeholder="Nhập mã OTP*"></div>
+      <span class="msg" id="otpMsg"></span>
+    </div>
+    <div class="ft"><button id="otpCancel">Huỷ bỏ</button><button id="otpOk">Xác nhận</button></div>
+  </div></div>
+
+  <div class="modal" id="imgModal"><div class="box">
+    <h3 id="imgTitle"></h3>
+    <div class="preview" id="imgPreview">🖼️</div>
+    <p id="imgName" style="word-break:break-all"></p>
+    <button id="imgClose">Đóng</button>
+  </div></div>
+
   <div class="banner" id="banner"></div>
   <div class="toast" id="toast"></div>
   <div class="modal" id="modal"><div class="box">
@@ -313,9 +556,11 @@
   $('mCancel').onclick=()=>$('modal').classList.remove('show');
 
   let bTimer;
-  function banner(msg){
-    const b=$('banner'); b.textContent=msg; b.classList.add('show');
-    clearTimeout(bTimer); bTimer=setTimeout(()=>b.classList.remove('show'),2500);
+  function banner(msg,sub,ok){
+    const b=$('banner'); b.textContent=msg; b.classList.toggle('ok',!!ok);
+    if(sub){ const s=document.createElement('small'); s.textContent=sub; b.appendChild(s); }
+    b.classList.add('show');
+    clearTimeout(bTimer); bTimer=setTimeout(()=>b.classList.remove('show'),sub?3000:2500);
   }
   function todayStr(){ const d=new Date(); return new Date(d-d.getTimezoneOffset()*60000).toISOString().slice(0,10); }
 
@@ -371,9 +616,10 @@
 
   // Tiếp tục: validate
   $('btnNext').onclick=()=>{
-    document.querySelectorAll('.field').forEach(f=>{f.classList.remove('err');f.querySelector('.msg')?.remove();});
+    const scope=$('form');
+    scope.querySelectorAll('.field').forEach(f=>{f.classList.remove('err');f.querySelector('.msg')?.remove();});
     let first=null;
-    document.querySelectorAll('.field[data-req]').forEach(f=>{
+    scope.querySelectorAll('.field[data-req]').forEach(f=>{
       const i=f.querySelector('input,select');
       if(!i.value.trim()){ setErr(f,'Trường bắt buộc'); first=first||f; }
     });
@@ -447,8 +693,246 @@
       return fail($('bEmail').closest('.field'),"'Email' không đúng định dạng");
     if(!document.querySelector('input[name=notify]:checked'))
       return fail($('gNotify'),"Vui lòng chọn 'Nhận thông báo qua'");
-    modal('✅','Thông tin hợp lệ','Bước tiếp theo không nằm trong phạm vi của prototype.');
+    show('card');
   };
+
+  /* ---------- B3: Thêm thẻ định danh ---------- */
+  // Kho serial giả lập (demo): serial nằm trong danh sách -> tìm thấy, ngoài danh sách -> "Không tìm thấy serial trong kho"
+  const STOCK={NFC:['FF000000','7777775D','7777776D','7777777D'],RFID:['FF000000','3416214B','3416214C']};
+  let cardChecked=false;
+  function setCardNext(on){ $('cardNext').disabled=!on; }
+  function resetCardCheck(){ cardChecked=false; $('feeTable').style.display='none'; setCardNext(false); }
+
+  $('serial').addEventListener('input',e=>{ e.target.value=e.target.value.toUpperCase().replace(/\s/g,''); resetCardCheck(); });
+  document.querySelectorAll('input[name=cardType]').forEach(r=>r.addEventListener('change',resetCardCheck));
+
+  $('btnQr').onclick=()=>{
+    $('serial').value='FF000000'; resetCardCheck();
+    $('serial').closest('.field').classList.remove('err');
+    toast('Đã quét QRCode (giả lập)');
+  };
+
+  $('btnCheckCard').onclick=()=>{
+    clearErrs($('card'));
+    const v=$('serial').value.trim();
+    if(!v) return fail($('serial').closest('.field'),"Vui lòng nhập 'Số Serial thẻ'");
+    const type=document.querySelector('input[name=cardType]:checked').value;
+    if(!STOCK[type].includes(v)){
+      resetCardCheck();
+      $('serial').closest('.field').classList.add('err');
+      return banner('Có lỗi xảy ra','Không tìm thấy serial trong kho');
+    }
+    cardChecked=true; $('feeTable').style.display='table'; setCardNext(true);
+    toast('Thẻ hợp lệ');
+  };
+
+  const leaveCard=()=>show('bill');
+  $('backCard').onclick=leaveCard;
+  $('cardBack').onclick=leaveCard;
+  $('cardNext').onclick=()=>{
+    if(!$('serial').value.trim()) return fail($('serial').closest('.field'),"Vui lòng nhập 'Số Serial thẻ'");
+    if(!cardChecked) return banner('Vui lòng bấm "Kiểm tra thẻ" trước khi tiếp tục');
+    show('vehicle'); $('vehicleBody').scrollTop=0;
+  };
+  document.querySelectorAll('.tab-home').forEach(t=>t.onclick=()=>modal('⚠️','Về Trang chủ?','Thông tin đăng ký đang nhập sẽ không được lưu.',
+    {ok:'Đồng ý',onOk:()=>{resetAll();show('home');}}));
+
+  /* ---------- B4: Thông tin phương tiện ---------- */
+  const leaveVehicle=()=>show('card');
+  $('backVehicle').onclick=leaveVehicle;
+  $('vehicleBack').onclick=leaveVehicle;
+  $('vPlate').addEventListener('input',e=>e.target.value=e.target.value.toUpperCase());
+
+  // Màn 3 - Thông báo lỗi: banner "Có lỗi xảy ra" + dòng mô tả trường thiếu
+  $('vehicleSave').onclick=()=>{
+    clearErrs($('vehicle'));
+    const req=[['vPlateColor','chọn','màu biển'],['vPlate','nhập','biển số xe'],['vOwner','nhập','tên chủ phương tiện'],['vType','chọn','loại phương tiện']];
+    for(const [id,verb,lb] of req){
+      if(!$(id).value.trim()){
+        const f=$(id).closest('.field'); f.classList.add('err'); f.scrollIntoView({behavior:'smooth',block:'center'});
+        return banner('Có lỗi xảy ra',`Vui lòng ${verb} ${lb}`);
+      }
+    }
+    openContractDoc();
+  };
+
+  /* ---------- B5 - Màn 1: Thông tin hợp đồng (xem hợp đồng) ---------- */
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const v=id=>esc($(id).value.trim())||'....................';
+  const dmy=id=>{ const x=$(id).value; return x?x.split('-').reverse().join('/'):'..../..../......'; };
+  const box=on=>on?'☑':'☐';
+  let sigDataUrl=null;
+
+  function buildContract(){
+    const notify=[...document.querySelectorAll('input[name=notify]:checked')].map(c=>c.value).join(', ');
+    const cycle=document.querySelector('input[name=cycle]:checked').value==='thang'?'Theo tháng':'Theo lượt';
+    const merge=document.querySelector('input[name=merge]:checked').value==='xe'?'Theo xe':'Hợp đồng';
+    const cardType=document.querySelector('input[name=cardType]:checked').value;
+    const sd=$('signDate').value.split('-');
+    const sigImg=sigDataUrl?`<img src="${sigDataUrl}" alt="">`:'<div style="height:56px"></div>';
+    $('docPages').innerHTML=`
+    <div class="paper">
+      <div class="logo">ePass</div>
+      <h2>GIẤY ĐỀ NGHỊ<br>MỞ TÀI KHOẢN GIAO THÔNG VÀ DÁN THẺ EPASS</h2>
+      <div class="sub">(Kiêm Hợp đồng cung cấp dịch vụ)<br>Kính gửi: Công ty Cổ phần Giao thông số Việt Nam - VDTC</div>
+      <h4>I. THÔNG TIN KHÁCH HÀNG</h4>
+      <b>1. KHÁCH HÀNG CÁ NHÂN</b> <span class="note">(Bắt buộc phải điền đầy đủ thông tin vào ô có dấu *)</span><br>
+      Loại khách hàng: ${v('custType')}<br>
+      Họ và tên*: <b>${v('name').toUpperCase()}</b> &nbsp; Ngày sinh*: ${dmy('dob')} &nbsp; Giới tính: ${v('gender')}<br>
+      Loại giấy tờ*: ${v('docType')}<br>
+      Số giấy tờ*: ${v('docNo')} &nbsp; Ngày cấp*: ${dmy('issueDate')} &nbsp; Nơi cấp*: ${v('issuePlace')}<br>
+      Địa chỉ*: ${v('addr')}, ${v('area')}<br>
+      Điện thoại di động*: ${v('phone')} &nbsp; Email: ${v('email')}
+      <h4>2. ĐỊA CHỈ THÔNG BÁO CƯỚC</h4>
+      Họ tên: ${v('bName')}<br>
+      Địa chỉ: ${v('bAddr')}, ${v('bArea')}<br>
+      Điện thoại: ${v('bPhone')} &nbsp; Email: ${v('bEmail')}<br>
+      Nhận thông báo qua: ${esc(notify)} &nbsp; Chu kỳ hoá đơn: ${cycle}${cycle==='Theo tháng'?' &nbsp; Gộp hoá đơn theo: '+merge:''}
+      <h4>3. THÔNG TIN BÊN CUNG CẤP DỊCH VỤ</h4>
+      Công ty Cổ phần Giao thông số Việt Nam. Người ký hợp đồng: ${v('signer')}<br>
+      Ngày ký: ${dmy('signDate')} &nbsp; Ngày hiệu lực: ${dmy('effDate')}
+      <h4>II. THÔNG TIN PHƯƠNG TIỆN MỞ TÀI KHOẢN GIAO THÔNG</h4>
+      Biển số xe*: <b>${v('vPlate')}</b> &nbsp; Màu biển*: ${v('vPlateColor')}<br>
+      Loại phương tiện*: ${v('vType')} &nbsp; Tên chủ phương tiện*: ${v('vOwner')}<br>
+      Hãng xe: ${v('vBrand')} &nbsp; Model: ${v('vModel')} &nbsp; Màu sơn: ${v('vColor')}<br>
+      Số khung: ${v('vChassis')} &nbsp; Số máy: ${v('vEngine')}<br>
+      Loại thẻ: Thẻ ${cardType} &nbsp; Số serial: <b>${v('serial')}</b><br>
+      Phí đấu nối: 118,000 đ &nbsp; Tổng: <b>118,000 đ</b>
+    </div>
+    <div class="paper">
+      <h4>III. ĐIỀU KHOẢN SỬ DỤNG DỊCH VỤ</h4>
+      1. Khách hàng cam kết các thông tin cung cấp tại Giấy đề nghị này là trung thực, chính xác và chịu trách nhiệm trước pháp luật về các thông tin đã cung cấp.<br>
+      2. Khách hàng có trách nhiệm bảo quản thẻ định danh đã dán trên phương tiện, không tự ý bóc, di chuyển hoặc làm hư hỏng thẻ.<br>
+      3. Khách hàng đảm bảo tài khoản giao thông có đủ số dư để thanh toán phí sử dụng đường bộ khi phương tiện qua trạm thu phí.<br>
+      4. Trường hợp thay đổi thông tin khách hàng hoặc phương tiện, Khách hàng có trách nhiệm thông báo cho Bên cung cấp dịch vụ để cập nhật.<br>
+      5. Các nội dung khác thực hiện theo Điều khoản và điều kiện chung về cung cấp dịch vụ thu phí điện tử không dừng do Bên cung cấp dịch vụ công bố trong từng thời kỳ.
+      <h4>IV. THÔNG TIN GIAO DỊCH TÀI KHOẢN</h4>
+      ${box(notify.includes('SMS'))} Nhận thông báo qua tin nhắn SMS &nbsp; ${box(notify.includes('Thông báo'))} Nhận thông báo qua ứng dụng<br>
+      Khách hàng đã đọc, hiểu rõ và đồng ý với toàn bộ nội dung Giấy đề nghị kiêm Hợp đồng cung cấp dịch vụ này.
+      <div style="text-align:right;font-style:italic;margin-top:10px">............, ngày ${sd[2]||'....'} tháng ${sd[1]||'....'} năm ${sd[0]||'......'}</div>
+      <div class="sig">
+        <div>KHÁCH HÀNG<div class="note">(Ký, ghi rõ họ tên)</div>${sigImg}${v('name').toUpperCase()}</div>
+        <div>ĐẠI DIỆN<br>CÔNG TY CỔ PHẦN<br>GIAO THÔNG SỐ VIỆT NAM</div>
+      </div>
+      <div class="end">— Hết —</div>
+    </div>`;
+  }
+
+  function checkDocScrolled(){
+    const w=$('docWrap');
+    if(w.scrollTop+w.clientHeight>=w.scrollHeight-8){
+      $('docNext').disabled=false; $('docHint').textContent='Bạn đã đọc hết hợp đồng';
+    }
+  }
+  function openContractDoc(){
+    buildContract();
+    $('docNext').disabled=true; $('docHint').textContent='Vui lòng kéo xuống cuối hợp đồng để ký';
+    show('contractDoc'); $('docWrap').scrollTop=0;
+    requestAnimationFrame(checkDocScrolled);
+  }
+  $('docWrap').addEventListener('scroll',checkDocScrolled);
+  $('backDoc').onclick=()=>show('vehicle');
+  // Ký hợp đồng: kiểm tra 3 mục đồng ý bắt buộc (nằm ngay dưới hợp đồng) rồi sang màn ký
+  $('docNext').onclick=()=>{
+    const cs=[...document.querySelectorAll('.cs')];
+    if(cs.slice(0,3).some(c=>!c.checked))
+      return banner('Có lỗi xảy ra','Vui lòng đồng ý 3 mục đích xử lý dữ liệu bắt buộc');
+    show('signScr'); requestAnimationFrame(initSig);
+  };
+
+  /* ---------- B5 - Màn 2: Chữ ký khách hàng ---------- */
+  const cv=$('sigCanvas'), ctx=cv.getContext('2d');
+  let drawing=false, hasSig=false, sigReady=false;
+  function initSig(){
+    if(sigReady) return;
+    const r=cv.getBoundingClientRect(), dpr=window.devicePixelRatio||1;
+    cv.width=r.width*dpr; cv.height=r.height*dpr; ctx.scale(dpr,dpr);
+    ctx.lineWidth=2.4; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.strokeStyle='#ef5b3a';
+    sigReady=true;
+  }
+  function pos(e){ const r=cv.getBoundingClientRect(); return [e.clientX-r.left,e.clientY-r.top]; }
+  cv.addEventListener('pointerdown',e=>{ initSig(); drawing=true; cv.setPointerCapture(e.pointerId); ctx.beginPath(); ctx.moveTo(...pos(e)); });
+  cv.addEventListener('pointermove',e=>{
+    if(!drawing) return; ctx.lineTo(...pos(e)); ctx.stroke();
+    if(!hasSig){ hasSig=true; $('sigPh').style.display='none'; $('signNext').disabled=false; }
+  });
+  ['pointerup','pointercancel','pointerleave'].forEach(t=>cv.addEventListener(t,()=>drawing=false));
+  function clearSig(){
+    ctx.save(); ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,cv.width,cv.height); ctx.restore();
+    hasSig=false; sigDataUrl=null; $('sigPh').style.display='flex'; $('signNext').disabled=true;
+  }
+  $('btnResign').onclick=clearSig;
+  $('backSign').onclick=()=>show('contractDoc');
+
+  /* ---------- Frame 5: Nhập OTP (OTP demo: 123456) ---------- */
+  const OTP_DEMO='123456';
+  function otpErr(msg){ $('otpMsg').textContent=msg; $('otpField').classList.toggle('err',!!msg); }
+  $('signNext').onclick=()=>{
+    sigDataUrl=cv.toDataURL('image/png');
+    $('otp').value=''; otpErr('');
+    $('otpModal').classList.add('show');
+    banner('Thành công','Vui lòng nhập mã OTP',true);
+    setTimeout(()=>$('otp').focus(),50);
+  };
+  $('otp').addEventListener('input',e=>{ e.target.value=e.target.value.replace(/\D/g,''); otpErr(''); });
+  $('otpCancel').onclick=()=>$('otpModal').classList.remove('show');
+  $('otpOk').onclick=()=>{
+    const o=$('otp').value;
+    if(!o) return otpErr('Vui lòng nhập mã OTP');
+    if(o.length<6) return otpErr('Mã OTP gồm 6 chữ số');
+    if(o!==OTP_DEMO) return otpErr('Mã OTP không chính xác');
+    $('otpModal').classList.remove('show');
+    buildContract(); // cập nhật chữ ký vào hợp đồng
+    modal('🎉','Ký hợp đồng thành công',`Đã đăng ký KHCN - Xe máy cho biển số ${$('vPlate').value.trim()}.`,
+      {ok:'Về Trang chủ',onOk:()=>{resetAll();show('home');}});
+    $('mCancel').style.display='none';
+  };
+
+  /* ---------- B4: Hồ sơ theo xe ---------- */
+  const DOCS_DEFAULT=[
+    ['Ảnh đăng ký xe (mặt trước)','44722D1612E2-0248...4F.jpg'],
+    ['Ảnh đăng ký xe (mặt sau)','30944F7B660-9891-...824.jpg'],
+    ['Ảnh sau xe có biển số','30944F7B660-9891-...824.jpg'],
+    ['Ảnh ngang xe','1498E4165C5D-D37F...1D5.jpg'],
+    ['Ảnh đầu xe','30944F7B660-9891-...824.jpg']
+  ];
+  let docs=[], uploadIdx=-1;
+  function resetDocs(){ docs=DOCS_DEFAULT.map(([type,name])=>({type,name,url:null})); renderDocs(); }
+  function renderDocs(){
+    const tb=$('docsBody'); tb.innerHTML='';
+    docs.forEach((d,i)=>{
+      const tr=document.createElement('tr');
+      const tdType=document.createElement('td'); tdType.textContent=d.type;
+      const tdName=document.createElement('td'); tdName.className='fn';
+      if(d.name) tdName.textContent=d.name;
+      else { const u=document.createElement('span'); u.className='upl'; u.textContent='+ Tải ảnh'; u.onclick=()=>{uploadIdx=i;$('docUpload').click();}; tdName.appendChild(u); }
+      const tdView=document.createElement('td'); tdView.className='c';
+      const bV=document.createElement('button'); bV.className='ico-btn'; bV.textContent='👁'; bV.disabled=!d.name; bV.onclick=()=>viewDoc(d);
+      tdView.appendChild(bV);
+      const tdDel=document.createElement('td'); tdDel.className='c';
+      const bD=document.createElement('button'); bD.className='ico-btn del'; bD.textContent='✕'; bD.disabled=!d.name;
+      bD.onclick=()=>modal('🗑️','Xoá ảnh?',`Xoá "${d.type}" khỏi hồ sơ theo xe?`,{ok:'Xoá',onOk:()=>{d.name=null;d.url=null;renderDocs();toast('Đã xoá ảnh');}});
+      tdDel.appendChild(bD);
+      tr.append(tdType,tdName,tdView,tdDel); tb.appendChild(tr);
+    });
+  }
+  function viewDoc(d){
+    $('imgTitle').textContent=d.type; $('imgName').textContent=d.name;
+    const p=$('imgPreview'); p.innerHTML='';
+    if(d.url){ const im=document.createElement('img'); im.src=d.url; p.appendChild(im); } else p.textContent='🖼️';
+    $('imgModal').classList.add('show');
+  }
+  $('imgClose').onclick=()=>$('imgModal').classList.remove('show');
+  $('docUpload').onchange=e=>{
+    const f=e.target.files[0]; if(!f||uploadIdx<0) return;
+    docs[uploadIdx].name=f.name; docs[uploadIdx].url=URL.createObjectURL(f);
+    e.target.value=''; renderDocs(); toast('Đã tải ảnh lên');
+  };
+  resetDocs();
+
+  $('btnDocs').onclick=()=>show('docs');
+  $('backDocs').onclick=()=>show('vehicle');
+  $('docsBack').onclick=()=>show('vehicle');
 
   // Huỷ bỏ
   function resetAll(){
@@ -457,6 +941,9 @@
     });
     $('ocrText').textContent='Chọn ảnh OCR:';
     $('gMerge').style.display='none';
+    resetCardCheck();
+    resetDocs();
+    clearSig();
     clearErrs(document);
   }
   $('billCancel').onclick=()=>modal('⚠️','Huỷ bỏ đăng ký?','Toàn bộ thông tin đã nhập sẽ không được lưu.',
